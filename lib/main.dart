@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
         // Contoh penggunaan Text dengan styling di dalam widget Center.
         body: Center(
           child: Text(
+
             'Selamat Datang di Flutter', // Pesan sambutan
             style: TextStyle(
               fontSize: 24, // Mengatur ukuran font
