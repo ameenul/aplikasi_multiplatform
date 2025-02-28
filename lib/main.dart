@@ -10,7 +10,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Contoh Scaffold')),
-        body: Center(child: Text('Halo Flutter!')),
+        // Contoh penggunaan Text dengan styling di dalam widget Center.
+        body: Center(
+          child: Text(
+            'Selamat Datang di Flutter', // Pesan sambutan
+            style: TextStyle(
+              fontSize: 24, // Mengatur ukuran font
+              color: Colors.blue, // Mengatur warna teks
+            ),
+          ),
+        ),
+
       ),
     );
   }
