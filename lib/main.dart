@@ -16,72 +16,64 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: Text('Contoh Scaffold')),
         // Parameter body pada Scaffold menerima widget, di sini menggunakan Center.
         // Contoh penggunaan Container untuk membungkus widget Text dengan padding, margin, dan dekorasi.
+        // Contoh penggunaan Row untuk menyusun ikon dan teks secara horizontal.
         body: Center(
-          child: Container(
-            padding: EdgeInsets.all(16), // Memberikan jarak di dalam container
-            margin: EdgeInsets.symmetric(horizontal: 20), // Memberikan jarak di luar container secara horizontal
-            decoration: BoxDecoration(
-              color: Colors.amber, // Warna latar container
-              borderRadius: BorderRadius.circular(8), // Membuat sudut container menjadi bulat
-            ),
-            child: Text(
-              'Ini di dalam Container', // Teks yang ditampilkan di dalam container
-              style: TextStyle(fontSize: 20), // Mengatur ukuran teks
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Menyebarkan ruang secara merata antar widget
+            children: [
+              // Widget Icon menggunakan IconData yang diambil dari kelas Icons.
+              // Kelas Icons menyediakan kumpulan konstanta statis yang mewakili berbagai ikon Material Design.
+              // Misalnya, Icons.star adalah IconData untuk ikon bintang.
+              Icon(Icons.star, color: Colors.red, size: 40), // Ikon bintang merah
+
+              Text('Bintang'), // Teks pendamping ikon
+
+              // Kita dapat menggunakan ikon lain dengan mengganti properti IconData, misalnya Icons.favorite untuk hati,
+              // atau Icons.home untuk rumah. Semua ikon tersebut didefinisikan sebagai properti statis di dalam kelas Icons.
+              Icon(Icons.star, color: Colors.red, size: 40), // Ikon bintang kedua
+            ],
           ),
         ),
+
       ),
     );
   }
 }
 
+// Jika ingin menggunakan ikon custom, Anda bisa mengambil gambar dari aset atau menggunakan font ikon custom.
+// Berikut adalah contoh penggunaan custom icon menggunakan ImageIcon dan AssetImage:
+
+// body: Center(
+// child: Row(
+// mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Menyebarkan ruang secara merata antar widget
+// children: [
+// // Menggunakan ImageIcon untuk menampilkan ikon custom dari aset gambar.
+// // Pastikan Anda telah menambahkan file 'assets/custom_icon.png' pada folder aset dan mendaftarkannya di pubspec.yaml.
+// ImageIcon(
+// AssetImage('assets/custom_icon.png'), // Path menuju file gambar custom
+// color: Colors.green, // Warna ikon yang diinginkan
+// size: 40, // Ukuran ikon
+// ),
+// Text('Custom Icon'), // Teks pendamping ikon
+// // Anda juga bisa menampilkan ikon custom dengan cara lain, seperti menggunakan widget Image jika tidak membutuhkan
+// // properti seperti ukuran atau warna yang otomatis dapat diubah.
+// ],
+// ),
+// ),
+
 /*
-Penjelasan Tambahan Mengenai Factory Constructor dan Fungsi Static:
-
-Di Dart, sebuah kelas tidak dideklarasikan sebagai "static". Namun, kita dapat memiliki anggota static
-di dalam kelas, dan juga menggunakan factory constructor yang cara pemanggilannya mirip dengan fungsi static.
-
-Contoh kelas sederhana:
-
-import 'dart:math'; // Digunakan untuk fungsi cos() dan sin()
-
-class MyPoint {
-  final double x;
-  final double y;
-
-  // Konstruktor biasa: Membuat instance MyPoint dengan nilai x dan y yang diberikan.
-  MyPoint(this.x, this.y);
-
-  // Factory constructor:
-  // Tidak dideklarasikan dengan kata kunci static, namun bisa dipanggil langsung seperti MyPoint.fromPolar(...)
-  // Contoh: Menghitung nilai x dan y dari koordinat polar (radius dan theta).
-  factory MyPoint.fromPolar(double radius, double theta) {
-    double x = radius * cos(theta);
-    double y = radius * sin(theta);
-    return MyPoint(x, y);
-  }
-
-  // Fungsi static:
-  // Dideklarasikan dengan kata kunci static sehingga dapat dipanggil langsung melalui nama kelas.
-  // Contoh: Mengembalikan titik asal (origin) yang bernilai (0,0).
-  static MyPoint origin() {
-    return MyPoint(0, 0);
-  }
-}
-
 Penjelasan:
-1. Factory Constructor:
-   - Digunakan untuk membuat instance dengan logika khusus, seperti menghitung koordinat dari nilai polar.
-   - Meskipun cara pemanggilannya (MyPoint.fromPolar(...)) menyerupai fungsi static,
-     factory constructor tidak dideklarasikan dengan kata kunci static.
-   - Factory constructor mengembalikan sebuah instance dari kelas tersebut setelah melakukan proses tertentu.
+1. Custom Icon Menggunakan ImageIcon:
+   - Widget ImageIcon digunakan untuk menampilkan ikon yang berasal dari aset gambar.
+   - Anda perlu memastikan bahwa file gambar custom (misalnya, custom_icon.png) telah ditempatkan di folder aset
+     dan direferensikan dengan benar di file pubspec.yaml.
+   - Properti AssetImage menunjuk pada lokasi file gambar aset Anda.
+   - Anda dapat mengatur warna dan ukuran ikon melalui properti 'color' dan 'size'.
 
-2. Fungsi Static:
-   - Dideklarasikan secara eksplisit dengan kata kunci static.
-   - Dapat dipanggil langsung melalui nama kelas tanpa membuat instance terlebih dahulu, contohnya MyPoint.origin().
-   - Fungsi static biasanya digunakan untuk menyediakan nilai konstan atau metode utilitas yang tidak bergantung pada state suatu instance.
+2. Alternatif Menggunakan Widget Image:
+   - Jika Anda tidak membutuhkan fitur khusus seperti mengubah warna, Anda juga dapat menggunakan widget Image secara langsung.
+   - Contoh: Image.asset('assets/custom_icon.png').
 
-Dengan demikian, meskipun factory constructor dapat dipanggil dengan cara yang mirip dengan fungsi static,
-mereka merupakan mekanisme konstruktor khusus untuk pembuatan objek, sedangkan fungsi static adalah metode
-yang berdiri sendiri dan tidak memerlukan instance dari kelas untuk dipanggil.
+Dengan demikian, untuk menampilkan ikon custom di Flutter, Anda dapat menggunakan ImageIcon bersama dengan AssetImage,
+atau widget Image, tergantung pada kebutuhan styling dan interaktivitas yang Anda inginkan.
 */
