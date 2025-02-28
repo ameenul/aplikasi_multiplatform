@@ -16,20 +16,18 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: Text('Contoh Scaffold')),
         // Parameter body pada Scaffold menerima widget, di sini menggunakan Center.
         // Contoh penggunaan Container untuk membungkus widget Text dengan padding, margin, dan dekorasi.
+        // Contoh penggunaan Row untuk menyusun ikon dan teks secara horizontal.
         body: Center(
-          child: Container(
-            padding: EdgeInsets.all(16), // Memberikan jarak di dalam container
-            margin: EdgeInsets.symmetric(horizontal: 20), // Memberikan jarak di luar container secara horizontal
-            decoration: BoxDecoration(
-              color: Colors.amber, // Warna latar container
-              borderRadius: BorderRadius.circular(8), // Membuat sudut container menjadi bulat
-            ),
-            child: Text(
-              'Ini di dalam Container', // Teks yang ditampilkan di dalam container
-              style: TextStyle(fontSize: 20), // Mengatur ukuran teks
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Menyebarkan ruang secara merata antar widget
+            children: [
+              Icon(Icons.star, color: Colors.red, size: 40), // Ikon bintang merah
+              Text('Bintang'), // Teks pendamping ikon
+              Icon(Icons.star, color: Colors.red, size: 40), // Ikon bintang kedua
+            ],
           ),
         ),
+
 
       ),
     );
